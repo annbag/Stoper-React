@@ -88,3 +88,8 @@ function pad0(value) {
     }
     return result;
 };
+
+ReactDOM.render(
+	<Stopwatch />, 
+	document.getElementById('app')
+);
