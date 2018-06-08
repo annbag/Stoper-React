@@ -1,0 +1,29 @@
+.controls {
+	display: flex;
+	justify-content: center;
+}
+.button {
+	background-color: #009999;
+	padding: 10px;
+	margin: 5px;
+	color: #ffffff;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 24px;
+	border-radius: 5px;
+}
+.button:hover {
+	background-color: #00cccc;
+}
+.stopwatch {
+	margin: 5px auto;
+	padding: 10px;	
+	background-color: #004d99;
+	color: #ffffff;
+	font-size: 24px;
+	border-radius: 5px;
+	width: 100px;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
