@@ -2,7 +2,14 @@
 	display: flex;
 	justify-content: center;
 }
-.button {
+h1 {
+	font-family: 'Open Sans', sans-serif;		
+	color: #1f3d7a;
+	font-size: 40px;
+	text-align: center;
+	text-transform: uppercase;
+}
+button {
 	background-color: #009999;
 	padding: 10px;
 	margin: 5px;
@@ -11,9 +18,10 @@
 	text-decoration: none;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 24px;
+	border: none;
 	border-radius: 5px;
 }
-.button:hover {
+button:hover {
 	background-color: #00cccc;
 }
 .stopwatch {
@@ -26,4 +34,14 @@
 	width: 100px;
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
+}
+.results {
+	font-family: 'Open Sans', sans-serif;		
+	color: #1f3d7a;
+	font-size: 20px;
+	padding: 0;
+}
+ul {
+	list-style: none;	
+	text-align: center;	
 }
