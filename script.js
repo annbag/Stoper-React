@@ -1,14 +1,16 @@
-class Stopwatch extends React.Component {
+class Stopwatch extends React.Component { 
 	constructor(props) {
 		super(props);
-		this.state = {
-			running: false,
+		this.state = {			
 			times: {
 				minutes: 0,
 	            seconds: 0,
 	            miliseconds: 0
-			},	
+			},
+			results: []	
 		}
+
+		this.running = false;
 	}
 	reset() {
         this.setState({
@@ -24,18 +26,16 @@ class Stopwatch extends React.Component {
 	}
     start() {
 	    if (!this.state.running) {
-	        this.setState({
-	        	running: true,
-		        watch: setInterval(() => this.step(), 10)
-	        });	        
+	        this.running = true;
+	        this.watch = setInterval(() => this.step(), 10);
 	    }
 	}
 	step() {
-	    if (!this.state.running) return;
+	    if (!this.running) return;
 	    this.calculate();	
 	}
 	calculate() {
-	    let{minutes, seconds, miliseconds}=this.state.times;
+	    let { minutes, seconds, miliseconds } = this.state.times;
 	    miliseconds += 1;
 	    if (miliseconds >= 100) {
 	        seconds += 1;
@@ -55,45 +55,35 @@ class Stopwatch extends React.Component {
     	})
 	}
 	stop() {
-	    this.setState({
-	    	running: false
-	    })	    
-	    clearInterval(this.state.watch);
+	    this.running = false;
+	    clearInterval(this.watch);
 	}
 	resetwatch() {
-		this.setState({
-			running: false,
-			times: {
-		        minutes: 0,
-		        seconds: 0,
-		        miliseconds: 0
-		    }
-		})
-		clearInterval(this.state.watch);
-		this.reset();		
+		this.running = false;
+
+		this.reset();
+		clearInterval(this.watch);	
+	}
+
+	render() {
+		return (
+			<div>
+				<h1>Stoper</h1>
+			    <nav className="controls">
+			      <button onClick={this.start.bind(this)}>Start</button>
+			      <button onClick={this.stop.bind(this)}>Stop</button>
+			      <button onClick={this.reset.bind(this)}>Reset</button>
+			    </nav>
+			    <div className="stopwatch">
+			    	{this.format(this.state.times)}
+			    </div>
+			    <ul className="results">
+					{this.state.results.map(result => <li>{result}</li>)}
+			    </ul>
+			</div>
+		)
 	}
 }
-render() {
-	return (
-		<div>
-			<h1>Stoper</h1>
-		    <nav className="controls">
-		      <Button onClick={this.start}>Start</Button>
-		      <Button onClick={this.stop>Stop</Butto>
-		      <Button onClick={this.reset>Reset</Butto>
-		    </nav>
-		    <div class="stopwatch">
-
-		    </div>
-		    <ul class="results">
-
-		    </ul>
-		</div>
-	)
-}
-
-
-
 
 /*const stopwatch = new Stopwatch(
 document.querySelector('.stopwatch'));
@@ -108,13 +98,13 @@ const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => stopwatch.resetwatch());*/
 
 //pad0 ma za zadanie dodać zero do liczb jednocyfrowych
-	function pad0(value) {
-	    let result = value.toString();
-	    if (result.length < 2) {
-	        result = '0' + result;
-	    }
-	    return result;
-	};
+function pad0(value) {
+    let result = value.toString();
+    if (result.length < 2) {
+        result = '0' + result;
+    }
+    return result;
+}
 
 ReactDOM.render(
 	<Stopwatch/>, 
