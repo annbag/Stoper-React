@@ -24,7 +24,6 @@ var Stopwatch = function (_React$Component) {
 			},
 			results: []
 		};
-
 		_this.running = false;
 		return _this;
 	}
@@ -99,9 +98,20 @@ var Stopwatch = function (_React$Component) {
 		key: "resetwatch",
 		value: function resetwatch() {
 			this.running = false;
-
 			this.reset();
 			clearInterval(this.watch);
+		}
+	}, {
+		key: "save",
+		value: function save() {
+			var results = this.state.results.slice();
+			results.push(this.format(this.state.times));
+			this.setState({ results: results });
+		}
+	}, {
+		key: "clear",
+		value: function clear() {
+			this.setState({ results: [] });
 		}
 	}, {
 		key: "render",
@@ -131,6 +141,16 @@ var Stopwatch = function (_React$Component) {
 						"button",
 						{ onClick: this.reset.bind(this) },
 						"Reset"
+					),
+					React.createElement(
+						"button",
+						{ onClick: this.save.bind(this) },
+						"Save"
+					),
+					React.createElement(
+						"button",
+						{ onClick: this.clear.bind(this) },
+						"Clear"
 					)
 				),
 				React.createElement(

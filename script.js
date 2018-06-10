@@ -9,7 +9,6 @@ class Stopwatch extends React.Component {
 			},
 			results: []	
 		}
-
 		this.running = false;
 	}
 	reset() {
@@ -60,9 +59,16 @@ class Stopwatch extends React.Component {
 	}
 	resetwatch() {
 		this.running = false;
-
 		this.reset();
 		clearInterval(this.watch);	
+	}
+	save() {
+		const results = this.state.results.slice(); 
+		results.push(this.format(this.state.times));
+		this.setState({results: results});
+	}
+	clear() {
+		this.setState({results: [] });
 	}
 
 	render() {
@@ -73,6 +79,8 @@ class Stopwatch extends React.Component {
 			      <button onClick={this.start.bind(this)}>Start</button>
 			      <button onClick={this.stop.bind(this)}>Stop</button>
 			      <button onClick={this.reset.bind(this)}>Reset</button>
+			      <button onClick={this.save.bind(this)}>Save</button>
+			      <button onClick={this.clear.bind(this)}>Clear</button>
 			    </nav>
 			    <div className="stopwatch">
 			    	{this.format(this.state.times)}
@@ -80,7 +88,7 @@ class Stopwatch extends React.Component {
 			    <ul className="results">
 					{this.state.results.map(result => <li>{result}</li>)}
 			    </ul>
-			</div>
+			</div> 
 		)
 	}
 }
