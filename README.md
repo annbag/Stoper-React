@@ -1,1 +1,1 @@
-https://annbag.github.io/zadanie-15-7-stoper-ES6/
+https://annbag.github.io/Stoper-ES6-task-15-6
