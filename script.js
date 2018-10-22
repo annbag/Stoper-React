@@ -4,8 +4,8 @@ class Stopwatch extends React.Component {
 		this.state = {			
 			times: {
 				minutes: 0,
-	            seconds: 0,
-	            miliseconds: 0
+	      seconds: 0,
+	      miliseconds: 0
 			},
 			results: []	
 		}
@@ -44,7 +44,6 @@ class Stopwatch extends React.Component {
 	        minutes += 1;
 	        seconds = 0;
 	    }
-	    //aktualizacaj times
         this.setState({
 	        times: {
 	            minutes,
@@ -93,19 +92,6 @@ class Stopwatch extends React.Component {
 	}
 }
 
-/*const stopwatch = new Stopwatch(
-document.querySelector('.stopwatch'));
-
-const startButton = document.getElementById('start');
-startButton.addEventListener('click', () => stopwatch.start());
-
-const stopButton = document.getElementById('stop');
-stopButton.addEventListener('click', () => stopwatch.stop());
-
-const resetButton = document.getElementById('reset');
-resetButton.addEventListener('click', () => stopwatch.resetwatch());*/
-
-//pad0 ma za zadanie dodać zero do liczb jednocyfrowych
 function pad0(value) {
     let result = value.toString();
     if (result.length < 2) {
